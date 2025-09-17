@@ -1,0 +1,7 @@
+a = float(input("Give me the first number: "))
+b = float(input("Give me the second number: "))
+print("Thank you!")
+print(f"{int(a)} + {int(b)} = {int(a + b)}")
+print(f"{int(a)} - {int(b)} = {int(a - b)}")
+print(f"{int(a)} / {int(b)} = {int(a / b)}")
+print(f"{int(a)} * {int(b)} = {int(a * b)}")
