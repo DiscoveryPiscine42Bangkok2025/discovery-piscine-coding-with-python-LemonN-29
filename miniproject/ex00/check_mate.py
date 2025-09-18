@@ -2,12 +2,14 @@ def checkmate(board):
     try:
         board_list = [list(row.strip()) for row in board.splitlines()]
         num_row = len(board_list)
-
+        
+        # ceck number row columns 
         if num_row == 0 or any(len(row) != num_row for row in board_list):
             print("fail")
             print("Board must be square and non-empty.")
             return
-
+        
+        # where are you king ?
         king_pos = None
         for i in range(num_row):
             for j in range(num_row):
@@ -18,12 +20,14 @@ def checkmate(board):
             print("Fail")
             return
 
-        x_k, y_k = king_pos 
+        # x, y
+        x_k, y_k = king_pos
 
         directions_rook = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         directions_bishop = [(1, 1), (1, -1), (-1, 1), (-1, -1)]
-        pawn_moves = [(1, -1), (1, 1)]
+        pawn_moves = [(1, -1), (1, 1)] 
 
+        # check if in bounds
         def in_bounds(x, y):
             return 0 <= x < num_row and 0 <= y < num_row
 
@@ -32,10 +36,8 @@ def checkmate(board):
             for dx, dy in directions:
                 x, y = x_k + dx, y_k + dy
                 while in_bounds(x, y):
-                    print(x, y)
                     if board_list[x][y] != '.':
                         if board_list[x][y].upper() in pieces:
-                            print(x, y, board_list[x][y])
                             return True
                         break
                     if one_step:
